@@ -4,6 +4,7 @@ services:
     image: mysql
     environment: 
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
+    command: --default-authentication-plugin=mysql_native_password
   web:
     build: .
     command: bundle exec rails s -p 80 -b '0.0.0.0'
