@@ -9,7 +9,7 @@
         "logDriver": "awslogs",
         "secretOptions": [],
         "options": {
-          "awslogs-group": "BlockshareInfraStack-blocksharetaskdefinitionappLogGroupF8A17C1E-LZY6M0N5ZX48",
+          "awslogs-group": "BlockshareInfraStack-blocksharetaskdefinitionappLogGroupF8A17C1E-1ALJQ00A5Z24O",
           "awslogs-region": "us-east-1",
           "awslogs-stream-prefix": "blockshare-web"
         }
@@ -22,7 +22,14 @@
           "containerPort": 80
         }
       ],
-      "command": [],
+      "command": [
+        "rails",
+        "s",
+        "-p",
+        "80",
+        "-b",
+        "0.0.0.0"
+      ],
       "linuxParameters": null,
       "cpu": 0,
       "environment": [],
@@ -64,7 +71,7 @@
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-east-1:848738341109:task-definition/BlockshareInfraStackblocksharetaskdefinition2D1EAE38:5",
+  "taskDefinitionArn": "arn:aws:ecs:us-east-1:848738341109:task-definition/BlockshareInfraStackblocksharetaskdefinition2D1EAE38:8",
   "family": "BlockshareInfraStackblocksharetaskdefinition2D1EAE38",
   "requiresAttributes": [
     {
@@ -128,7 +135,7 @@
   ],
   "networkMode": "awsvpc",
   "cpu": "256",
-  "revision": 5,
+  "revision": 8,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
