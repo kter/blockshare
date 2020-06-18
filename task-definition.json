@@ -5,7 +5,15 @@
     {
       "dnsSearchDomains": [],
       "environmentFiles": null,
-      "logConfiguration": null,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "secretOptions": [],
+        "options": {
+          "awslogs-group": "BlockshareInfraStack-blocksharetaskdefinitionappLogGroupF8A17C1E-LZY6M0N5ZX48",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "blockshare-web"
+        }
+      },
       "entryPoint": [],
       "portMappings": [
         {
@@ -46,7 +54,7 @@
       "dockerLabels": {},
       "systemControls": [],
       "privileged": null,
-      "name": "serviceTaskContainerDefinition"
+      "name": "app"
     }
   ],
   "placementConstraints": [],
@@ -56,14 +64,32 @@
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-east-1:848738341109:task-definition/BlockshareInfraStackblocksharetaskdefinition2D1EAE38:3",
+  "taskDefinitionArn": "arn:aws:ecs:us-east-1:848738341109:task-definition/BlockshareInfraStackblocksharetaskdefinition2D1EAE38:5",
   "family": "BlockshareInfraStackblocksharetaskdefinition2D1EAE38",
   "requiresAttributes": [
     {
       "targetId": null,
       "targetType": null,
       "value": null,
+      "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "ecs.capability.execution-role-awslogs"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
       "name": "com.amazonaws.ecs.capability.ecr-auth"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
     },
     {
       "targetId": null,
@@ -102,7 +128,7 @@
   ],
   "networkMode": "awsvpc",
   "cpu": "256",
-  "revision": 3,
+  "revision": 5,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
