@@ -7,5 +7,5 @@ RUN mkdir /myapp
 WORKDIR /myapp
 ADD Gemfile /myapp/Gemfile
 ADD Gemfile.lock /myapp/Gemfile.lock
-RUN yarn install --check-files && bundle install
+RUN bundle install && yarn install --check-files
 ADD . /myapp
