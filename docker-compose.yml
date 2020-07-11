@@ -7,6 +7,9 @@ services:
     command: --default-authentication-plugin=mysql_native_password
   web:
     build: .
+    environment: 
+      - TWITTER_API_KEY=${TWITTER_API_KEY}
+      - TWITTER_API_SECRET=${TWITTER_API_SECRET}
     command: bundle exec rails s -p 80 -b '0.0.0.0'
     volumes:
       - .:/myapp
