@@ -11,6 +11,8 @@ services:
       - TWITTER_API_KEY=${TWITTER_API_KEY}
       - TWITTER_API_SECRET=${TWITTER_API_SECRET}
     command: bundle exec rails s -p 80 -b '0.0.0.0'
+    stdin_open: true
+    tty: true
     volumes:
       - .:/myapp
     ports:
