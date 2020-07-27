@@ -38,5 +38,16 @@ spec:
           envFrom:
             - configMapRef:
                 name: rails-config
+          env:
+            - name: TWITTER_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: credentials
+                  key: TWITTER_API_KEY
+            - name: TWITTER_API_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: credentials
+                  key: TWITTER_API_SECRET
           ports:
             - containerPort: 3000
