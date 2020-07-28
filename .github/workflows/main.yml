@@ -86,7 +86,7 @@ jobs:
         run: doctl kubernetes cluster kubeconfig save blockshare
 
       - name: Deploy to DigitalOcean Kubernetes
-        run: kubectl set image --record deployment/rails container=${{ github.repository }}:${{ github.sha }}
+        run: kubectl set image --record deployment/rails rails=${{ github.repository }}:${{ github.sha }}
 
       - name: Verify deployment
         run: kubectl rollout status deployment/rails
