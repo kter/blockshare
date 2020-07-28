@@ -97,9 +97,7 @@ jobs:
           kubectl create secret generic credentials --from-env-file .credentials --dry-run -o yaml | kubectl apply -f -
 
       - name: Deploy to DigitalOcean Kubernetes
-        env:
-          SHA8: ${GITHUB_SHA::8}
-        run: kubectl set image --record deployment/rails rails=${{ github.repository }}:sha-$SHA8
+        run: kubectl set image --record deployment/rails rails=${{ github.repository }}:sha-${GITHUB_SHA::8}
 
       - name: Verify deployment
         run: kubectl rollout status deployment/rails
