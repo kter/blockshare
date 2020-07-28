@@ -79,5 +79,10 @@ spec:
                 secretKeyRef:
                   name: credentials
                   key: RAILS_ENV
+            - name: SECRET_KEY_BASE
+              valueFrom:
+                secretKeyRef:
+                  name: credentials
+                  key: SECRET_KEY_BASE
           ports:
             - containerPort: 3000
