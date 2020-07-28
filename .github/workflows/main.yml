@@ -85,6 +85,17 @@ jobs:
       - name: Save DigitalOcean kubeconfig
         run: doctl kubernetes cluster kubeconfig save blockshare
 
+      - name: Save Secrets To Cluster
+        run: |
+          cat << __EOF__ > .credentials
+          TWITTER_API_KEY=${{ secrets.TWITTER_API_KEY }}
+          TWITTER_API_SECRET=${{ secrets.TWITTER_API_SECRET }}
+          DB_USER=${{ secrets.DB_USER }}
+          DB_PASS=${{ secrets.DB_PASS }}
+          DB_HOST=${{ secrets.DB_HOST }}
+          __EOF__
+          kubectl create secret generic credentials --from-env-file .credentials
+
       - name: Deploy to DigitalOcean Kubernetes
         env:
           SHA8: ${GITHUB_SHA::8}
