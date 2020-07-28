@@ -55,3 +55,4 @@ production:
   username: <%= ENV['DB_USER'] %>
   password: <%= ENV['DB_PASS'] %>
   host: <%= ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
