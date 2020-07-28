@@ -28,4 +28,34 @@ spec:
                 secretKeyRef:
                   name: credentials
                   key: TWITTER_API_SECRET
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: credentials
+                  key: DB_USER
+            - name: DB_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: credentials
+                  key: DB_PASS
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: credentials
+                  key: DB_HOST
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: credentials
+                  key: DB_NAME
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: credentials
+                  key: DB_PORT
+            - name: RAILS_ENV
+              valueFrom:
+                secretKeyRef:
+                  name: credentials
+                  key: RAILS_ENV
       restartPolicy: Never
