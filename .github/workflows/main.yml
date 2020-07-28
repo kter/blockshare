@@ -94,7 +94,7 @@ jobs:
           DB_PASS=${{ secrets.DB_PASS }}
           DB_HOST=${{ secrets.DB_HOST }}
           __EOF__
-          kubectl create secret generic credentials --from-env-file .credentials
+          kubectl apply secret generic credentials --from-env-file .credentials
 
       - name: Deploy to DigitalOcean Kubernetes
         env:
