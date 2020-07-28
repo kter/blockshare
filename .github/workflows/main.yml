@@ -7,9 +7,10 @@ on:
     branches:
       - master
   pull_request:
-    - ready_for_review
-    - reopened
-    - synchronized
+    types:
+      - ready_for_review
+      - reopened
+      - synchronized
 
 jobs:
   build:
