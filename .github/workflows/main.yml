@@ -70,23 +70,24 @@ jobs:
       #    cluster: blockshare
       #    wait-for-service-stability: true
   deploy:
-    - name: Deploy to Production
-      if: github.ref == 'refs/heads/master'
-      steps:
-        - uses: actions/checkout@master
-        - name: deploy to cluster
-          uses: steebchen/kubectl@master
-          env:
-            # cat $HOME/.kube/config | base64
-            KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-          with:
-            args: set image --record deployment/blockshare container=${{ github.repository }}:${{ github.sha }}
-        - name: verify deployment
-          uses: steebchen/kubectl@master
-          env:
-            KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-            KUBECTL_VERSION: "1.15"
-          with:
-            args: '"rollout status deployment/blockshare"'
+    name: Deploy to Production
+    runs-on: ubuntu-16.04
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@master
+      - name: deploy to cluster
+        uses: steebchen/kubectl@master
+        env:
+          # cat $HOME/.kube/config | base64
+          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+        with:
+          args: set image --record deployment/blockshare container=${{ github.repository }}:${{ github.sha }}
+      - name: verify deployment
+        uses: steebchen/kubectl@master
+        env:
+          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+          KUBECTL_VERSION: "1.15"
+        with:
+          args: '"rollout status deployment/blockshare"'
 
 
