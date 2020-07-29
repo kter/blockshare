@@ -12,4 +12,5 @@ ADD package.json /myapp/package.json
 ADD yarn.lock /myapp/yarn.lock
 RUN bundle install && yarn install
 ADD . /myapp
+RUN echo $SECRET_KEY_BASE
 RUN DB_ADAPTER=nulldb RAILS_ENV=production bundle exec rake assets:precompile
