@@ -1,5 +1,6 @@
 FROM ruby:2.7.1
 ARG SECRET_KEY_BASE
+ARG TEST
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs curl apt-transport-https wget && \
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
@@ -13,4 +14,5 @@ ADD yarn.lock /myapp/yarn.lock
 RUN bundle install && yarn install
 ADD . /myapp
 RUN echo $SECRET_KEY_BASE
+RUN echo $TEST
 RUN DB_ADAPTER=nulldb RAILS_ENV=production bundle exec rake assets:precompile
