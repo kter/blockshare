@@ -6,7 +6,11 @@ kubectl create secret generic credentials --from-env-file ../.env
 kubectl apply -f .
 helm install nginx-ingress stable/nginx-ingress --set controller.publishService.enabled=true
 ```
-# DigitalOcean from local execution
+# DigitalOcean (production)
+
+They deployed by GitHub Actions after merged to master branch.
+
+# DigitalOcean (production) from local execution (Not Recommended)
 
 Fill the credentials in ../.env-prd
 
